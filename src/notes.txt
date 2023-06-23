@@ -1,0 +1,2 @@
+We learnt the application of null in this project.
+Null refers to no one is selected - in this context
