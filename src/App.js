@@ -48,7 +48,7 @@ function FlashCards() {
   return (
     <div className="flashcards">
       {questions.map((question) => (
-        <Card
+        <div
           onClick={() => {
             setSelectedId((prevId) => {
               if (prevId === question.id) {
@@ -58,36 +58,10 @@ function FlashCards() {
             });
           }}
           className={question.id === selectedId ? "selected" : ""}
-          question={question}
-        />
+        >
+          {question.id === selectedId ? question.question : question.answer}
+        </div>
       ))}
-    </div>
-  );
-}
-
-function Card(questionObj) {
-  const { question, answer } = questionObj.question;
-  const [message, setMessage] = useState(question);
-
-  console.log(question, answer);
-
-  function messageHandler() {
-    if (message === question) {
-      setMessage(answer);
-    } else {
-      setMessage(question);
-    }
-  }
-
-  return (
-    <div
-      className={questionObj.className}
-      onClick={() => {
-        messageHandler();
-        questionObj.onClick();
-      }}
-    >
-      {message}
     </div>
   );
 }
